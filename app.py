@@ -20,15 +20,6 @@ def setcookies():
         post = requests.post(auth_page, json=auth_data)
     return str(post.cookies)
 
-    #     with requests.Session() as session:
-    #         auth_page = 'https://mybook.ru/api/auth/'
-    #         auth_data = ({"email": user, "password": password})
-    #         post = session.post(auth_page, json=auth_data)
-    #         get = session.get('https://mybook.ru/api/bookuserlist/', headers ={"Accept":'application/json; version=5'}).json()
-    #         with codecs.open('data.txt','w','utf-8') as f:
-    #             data = f.write(json.dumps(get, indent=2,ensure_ascii=False))
-    # return Response(iter_books())
-
 
 def get_list_books():
     with open('data.txt') as f:
@@ -50,7 +41,7 @@ def get_list_books():
                 index = -1
     return books
 
-#@app.route('/booklist',methods=['POST'])
+
 def iter_books(info=None):
     books = get_list_books()
     Book = collections.namedtuple('Book', 'name_book cover authors')
